@@ -37,9 +37,6 @@
 /*********************
  *      DEFINES
  *********************/
-#define LV_100ASK_IMX6ULL_PRO          1
-#define LV_100ASK_IMX6ULL_MINI         0
-#define LV_100ASK_STM32MP157_PRO       0
 
 /**********************
  *      TYPEDEFS

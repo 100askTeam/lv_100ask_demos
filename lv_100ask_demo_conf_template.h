@@ -25,7 +25,12 @@
 /*Show some widget*/
 
 /* [Info] About us 1024x600*/
-#define LV_USE_100ASK_DEMO_ABOUT_US         0
+#define LV_USE_100ASK_DEMO_ABOUT_US        0
+#if LV_USE_100ASK_DEMO_ABOUT_US
+    #define LV_100ASK_IMX6ULL_PRO          0
+    #define LV_100ASK_IMX6ULL_MINI         0
+    #define LV_100ASK_STM32MP157_PRO       0
+#endif
 
 /* [Game] Memory game demo, optimized for 1024x600*/
 #define LV_USE_100ASK_DEMO_GAME_MEMORY      0
