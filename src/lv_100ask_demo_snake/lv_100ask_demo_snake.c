@@ -112,6 +112,7 @@ void lv_100ask_demo_snake(void)
 	g_pt_lv_100ask_snake->gesture = 0;
 
 	g_pt_lv_100ask_snake->bg = lv_obj_create(lv_scr_act());
+	lv_obj_set_style_radius(g_pt_lv_100ask_snake->bg, 0 ,0);
 	lv_obj_set_size(g_pt_lv_100ask_snake->bg, LV_HOR_RES, LV_VER_RES);
 	lv_obj_set_y(g_pt_lv_100ask_snake->bg, 0);
 
