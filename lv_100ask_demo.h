@@ -38,6 +38,7 @@ extern "C" {
 #include "src/lv_100ask_demo_calc/lv_100ask_demo_calc.h"
 
 
+
 /*********************
  *      DEFINES
  *********************/

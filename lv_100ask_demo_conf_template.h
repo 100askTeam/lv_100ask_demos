@@ -37,7 +37,10 @@
 #define LV_USE_100ASK_DEMO_GAME_TRON        0
 
 /* [Efficiency] Calculator demo, optimized for 1024x600*/
-#define LV_USE_100ASK_DEMO_EFF_CALC        0
+#define LV_USE_100ASK_DEMO_EFF_CALC         0
+
+/* [Efficiency(Linux only)] Calculator demo, optimized for 1024x600*/
+#define LV_USE_100ASK_DEMO_WEATHER          0
 
 
 

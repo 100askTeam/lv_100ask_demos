@@ -28,7 +28,7 @@
  *********************/
 #include "../../lv_100ask_demo.h"
 
-#if 1 //LV_USE_100ASK_DEMO_GAME_TRON
+#if LV_USE_100ASK_DEMO_GAME_TRON
 
 #include <stdio.h>
 #include <stdlib.h>
