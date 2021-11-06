@@ -37,8 +37,8 @@
 /*********************
  *      DEFINES
  *********************/
-#define OBJ_COUNT_HOR   (4)
-#define OBJ_COUNT_VER   (4)
+#define OBJ_COUNT_HOR   (2)
+#define OBJ_COUNT_VER   (2)
 #define OBJ_MAX_COUNT   ((OBJ_COUNT_HOR * OBJ_COUNT_VER))
 #define OBJ_RAND_COUNT  ((OBJ_COUNT_HOR * OBJ_COUNT_VER) - 1)
 
@@ -51,6 +51,7 @@
  *  STATIC VARIABLES
  **********************/
 static int g_rand_number[OBJ_COUNT_HOR][OBJ_COUNT_VER] = {0};
+//static int g_rand_number[OBJ_COUNT_HOR][OBJ_COUNT_VER] = {{1,2},{3,0}};
 static lv_obj_t * g_obj[OBJ_COUNT_HOR][OBJ_COUNT_VER];   /* 方块 */
 static lv_obj_t * g_game_win;
 
@@ -61,33 +62,25 @@ static void init_list_rand_number(void);
 static void get_list_rand_number(int arry[], int max_count, int count);
 static void load_resoure(void);
 static void game_win_tip(void);
+static bool check_sort(void);
 
 static void game_win_event_cb(lv_event_t * e);
 static void event_handler(lv_event_t * e);
 
+
+
+
 /**********************
- *   GLOBAL FUNCTIONS
+ *   STATIC FUNCTIONS
  **********************/
-
-/*
- *  函数名：   void lv_100ask_demo_tron(void)
- *  输入参数： 无
- *  返回值：   无
- *  函数作用： 应用初始化入口
-*/
-void lv_100ask_demo_tron(void)
-{
-    // 初始化随机数
-    init_list_rand_number();
-    load_resoure();
-    game_win_tip();
-}
-
 
 static void game_win_event_cb(lv_event_t * e)
 {
     lv_obj_t * obj = lv_event_get_current_target(e);
     LV_LOG_USER("Button %s clicked", lv_msgbox_get_active_btn_text(obj));
+
+    //init_list_rand_number();
+    load_resoure();
 }
 
 static void game_win_tip(void)
@@ -96,13 +89,12 @@ static void game_win_tip(void)
 
     g_game_win = lv_msgbox_create(lv_scr_act(), "victory", "That is great! You win!", btns, true);
     lv_obj_move_background(g_game_win);
+    //lv_obj_move_foreground(g_game_win);
     lv_obj_add_event_cb(g_game_win, game_win_event_cb, LV_EVENT_VALUE_CHANGED, NULL);
     lv_obj_center(g_game_win);
 }
 
-/**********************
- *   STATIC FUNCTIONS
- **********************/
+
 static void init_list_rand_number(void)
 {
     int tmp_rand_number[OBJ_MAX_COUNT] = {0};
@@ -166,7 +158,7 @@ static void load_resoure(void)
 
 	/* Create a container with flex */
     lv_obj_t * cont = lv_obj_create(lv_scr_act());
-    lv_obj_set_style_base_dir(cont, LV_BASE_DIR_LTR, 0);
+    //lv_obj_set_style_base_dir(cont, LV_BASE_DIR_LTR, 0);
     lv_obj_set_style_pad_row(cont, 0, 0);
     lv_obj_set_style_pad_column(cont, 0, 0);
     lv_obj_set_size(cont, LV_HOR_RES, LV_VER_RES);
@@ -184,6 +176,8 @@ static void load_resoure(void)
             lv_obj_set_size(g_obj[row][col], (LV_HOR_RES - 4) / OBJ_COUNT_HOR, LV_VER_RES / OBJ_COUNT_VER);
             if (0 == g_rand_number[row][col])   lv_obj_add_style(g_obj[row][col], &extra_obj_style, 0);
             else    lv_obj_add_style(g_obj[row][col], &obj_style, 0);
+
+            lv_obj_add_style(g_obj[row][col], &obj_style, 0);
 
             lv_obj_t * label = lv_label_create(g_obj[row][col]);
             lv_label_set_text_fmt(label, "%d", g_rand_number[row][col]);
@@ -246,8 +240,55 @@ static void event_handler(lv_event_t * e)
                 }
             }
         }
-        lv_obj_move_foreground(g_game_win);
+        if (check_sort() == 1)
+            lv_obj_move_foreground(g_game_win);
+        LV_LOG_USER("Toggled");
+        printf("fdsfadf\n");
     }
 }
+
+
+static bool check_sort(void)
+{
+    int row, col, ret = 0;
+    for(row = 0; row < OBJ_COUNT_VER; row++)
+    {
+        for(col = 0; col < OBJ_COUNT_VER; col++)
+        {
+            if(0 == g_rand_number[row][col])
+            {
+                if(((g_rand_number[row][col+1] - g_rand_number[row][col] == 1)) ||\
+                   (((row+1) == OBJ_COUNT_VER) && (col+1) == OBJ_COUNT_VER))
+                    ret = 1;
+                else
+                {
+                    ret = 0;
+                    break;
+                }
+            }
+        }
+    }
+    return ret;
+}
+
+
+/**********************
+ *   GLOBAL FUNCTIONS
+ **********************/
+
+/*
+ *  函数名：   void lv_100ask_demo_tron(void)
+ *  输入参数： 无
+ *  返回值：   无
+ *  函数作用： 应用初始化入口
+*/
+void lv_100ask_demo_tron(void)
+{
+    // 初始化随机数
+    init_list_rand_number();
+    load_resoure();
+    game_win_tip();
+}
+
 
 #endif /* LV_USE_100ASK_DEMO_GAME_TRON*/
