@@ -112,7 +112,7 @@ void lv_100ask_demo_about(void)
     /* Add buttons to the list */
     lv_list_add_text(info_list1, "Hardware Specifications");
     lv_list_add_btn(info_list1, "\xef""100ASK_IMX6ULL_Pro", "Name");
-    lv_list_add_btn(info_list1, "\xef""CPU", "ARM Cortex-A 800M");
+    lv_list_add_btn(info_list1, "\xef""ARM Cortex-A 800M", "CPU");
     lv_list_add_btn(info_list1, "\xef""512MB DDR3L", "Memory");
     lv_list_add_btn(info_list1, "\xef""4GB EMMC FLASH", "FLASH");
     lv_list_add_btn(info_list1, "\xef""7-inch(1024x600) RGB", "Screen");
