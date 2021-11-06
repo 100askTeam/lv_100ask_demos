@@ -24,6 +24,9 @@
 
 /*Show some widget*/
 
+/* [Info] About us 1024x600*/
+#define LV_USE_100ASK_DEMO_ABOUT_US         0
+
 /* [Game] Memory game demo, optimized for 1024x600*/
 #define LV_USE_100ASK_DEMO_GAME_MEMORY      0
 
@@ -39,7 +42,7 @@
 /* [Efficiency] Calculator demo, optimized for 1024x600*/
 #define LV_USE_100ASK_DEMO_EFF_CALC         0
 
-/* [Efficiency(Linux only)] Calculator demo, optimized for 1024x600*/
+/* [Efficiency(Linux only)] Weather overview 1024x600*/
 #define LV_USE_100ASK_DEMO_WEATHER          0
 
 
