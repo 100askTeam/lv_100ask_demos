@@ -38,6 +38,7 @@ extern "C" {
 #include "src/lv_100ask_demo_calc/lv_100ask_demo_calc.h"
 #include "src/lv_100ask_demo_weather/lv_100ask_demo_weather.h"
 #include "src/lv_100ask_demo_about/lv_100ask_demo_about.h"
+#include "src/lv_100ask_demo_qrcode/lv_100ask_demo_qrcode.h"
 
 
 /*********************

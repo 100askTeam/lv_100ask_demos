@@ -47,6 +47,10 @@
 /* [Efficiency] Calculator demo, optimized for 1024x600*/
 #define LV_USE_100ASK_DEMO_EFF_CALC         0
 
+
+/* [Efficiency] Dynamically create QR code 1024x600*/
+#define LV_USE_100ASK_DEMO_QRCODE           0
+
 /* [Efficiency(Linux only)] Weather overview 1024x600*/
 #define LV_USE_100ASK_DEMO_WEATHER          0
 
