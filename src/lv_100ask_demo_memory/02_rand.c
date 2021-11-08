@@ -6,7 +6,7 @@
 #define COUNT   10
 
 // 生成m个小于n的不重复随机数的算法
-void init_rand(int ayyr[], int count, unsigned seed)
+static void init_rand(int ayyr[], int count, unsigned seed)
 {
 	int w, t;
 
@@ -23,6 +23,8 @@ void init_rand(int ayyr[], int count, unsigned seed)
 	}
 }
 
+
+#if 0
 void main()
 {
 	int a1[COUNT] = {0};
@@ -38,3 +40,5 @@ void main()
 	    printf("%d ", a2[i]);
 	printf("\n");
 }
+
+#endif

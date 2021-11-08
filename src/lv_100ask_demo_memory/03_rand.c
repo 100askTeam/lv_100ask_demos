@@ -6,7 +6,7 @@
 #define COUNT   (MAX_NUM / 2)
 
 // 生成m个小于n的不重复随机数的算法
-void init_rand(int ayyr[], int max_count, int count)
+static void init_rand(int ayyr[], int max_count, int count)
 {
 	int w, t;
 
@@ -23,6 +23,7 @@ void init_rand(int ayyr[], int max_count, int count)
 	}
 }
 
+#if 0
 void main()
 {
 	int a1[MAX_NUM] = {0};
@@ -36,3 +37,4 @@ void main()
 	}
 	printf("\n");
 }
+#endif

@@ -7,7 +7,7 @@
 
 
 // 生成m个小于n的不重复随机数的算法
-int* init_rand(int ayyr[], int count)
+static int* init_rand(int ayyr[], int count)
 {
 	int w, t;
 	srand((unsigned)time(NULL));
@@ -22,7 +22,7 @@ int* init_rand(int ayyr[], int count)
 	}
 }
 
-#if 1
+#if 0
 void main()
 {
 	int a1[COUNT] = {0};
@@ -34,7 +34,7 @@ void main()
 	for (int i = 0; i < COUNT; i++)
 	    printf("%d ", a1[i]);
 	printf("\n");
-	for (i = 0; i < COUNT; i++)
+	for (int i = 0; i < COUNT; i++)
 	    printf("%d ", a2[i]);
 	printf("\n");
 }
