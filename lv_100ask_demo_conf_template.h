@@ -42,7 +42,7 @@
 #define LV_USE_100ASK_DEMO_GAME_SNAKE       0
 
 /* [Game] Tron game demo, optimized for 1024x600*/
-#define LV_USE_100ASK_DEMO_GAME_TRON        0
+#define LV_USE_100ASK_DEMO_GAME_TILES       0
 
 /* [Efficiency] Calculator demo, optimized for 1024x600*/
 #define LV_USE_100ASK_DEMO_EFF_CALC         0

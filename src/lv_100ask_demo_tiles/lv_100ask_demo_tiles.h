@@ -1,5 +1,5 @@
-#ifndef LV_100ASK_DEMO_TRON_H
-#define LV_100ASK_DEMO_TRON_H
+#ifndef LV_100ASK_DEMO_TILSE_H
+#define LV_100ASK_DEMO_TILSE_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -23,7 +23,7 @@ extern "C" {
 /**********************
  * GLOBAL PROTOTYPES
  **********************/
-void lv_100ask_demo_tron(void);
+void lv_100ask_demo_tiles(void);
 
 
 /**********************
@@ -34,7 +34,7 @@ void lv_100ask_demo_tron(void);
 } /* extern "C" */
 #endif
 
-#endif /* LV_100ASK_DEMO_TRON_H */
+#endif /* LV_100ASK_DEMO_TILSE_H */
 
 
 

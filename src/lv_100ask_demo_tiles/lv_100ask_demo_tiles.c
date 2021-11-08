@@ -1,11 +1,12 @@
 
 /**
  ******************************************************************************
- * @file    lv_100ask_demo_tron.c
+ * @file    lv_100ask_demo_tiles.c
  * @author  百问科技
  * @version V1.0
  * @date    2021-10-17
- * @brief	数字拼图游戏
+ * @brief	将数字滑动到位的拼图游戏
+ *          单击靠近空正方形的方格以交换位置。你能把方格从左到右，从下到上顺序摆放吗？
  ******************************************************************************
  * Change Logs:
  * Date           Author          Notes
@@ -19,7 +20,7 @@
  ******************************************************************************
  */
 /**
- * @file lv_100ask_demo_tron.c
+ * @file lv_100ask_demo_tiles.c
  *
  */
 
@@ -28,17 +29,17 @@
  *********************/
 #include "../../lv_100ask_demo.h"
 
-#if LV_USE_100ASK_DEMO_GAME_TRON
+#if LV_USE_100ASK_DEMO_GAME_TILES
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "lv_100ask_demo_tron.h"
+#include "lv_100ask_demo_tiles.h"
 
 /*********************
  *      DEFINES
  *********************/
-#define OBJ_COUNT_HOR   (2)
-#define OBJ_COUNT_VER   (2)
+#define OBJ_COUNT_HOR   (4)
+#define OBJ_COUNT_VER   (4)
 #define OBJ_MAX_COUNT   ((OBJ_COUNT_HOR * OBJ_COUNT_VER))
 #define OBJ_RAND_COUNT  ((OBJ_COUNT_HOR * OBJ_COUNT_VER) - 1)
 
@@ -50,8 +51,8 @@
 /**********************
  *  STATIC VARIABLES
  **********************/
-static int g_rand_number[OBJ_COUNT_HOR][OBJ_COUNT_VER] = {0};
-//static int g_rand_number[OBJ_COUNT_HOR][OBJ_COUNT_VER] = {{1,2},{3,0}};
+//static int g_rand_number[OBJ_COUNT_HOR][OBJ_COUNT_VER] = {0};
+static int g_rand_number[OBJ_COUNT_HOR][OBJ_COUNT_VER] = {{1,2},{3,0}};
 static lv_obj_t * g_obj[OBJ_COUNT_HOR][OBJ_COUNT_VER];   /* 方块 */
 static lv_obj_t * g_game_win;
 
@@ -79,7 +80,7 @@ static void game_win_event_cb(lv_event_t * e)
     lv_obj_t * obj = lv_event_get_current_target(e);
     LV_LOG_USER("Button %s clicked", lv_msgbox_get_active_btn_text(obj));
 
-    //init_list_rand_number();
+    init_list_rand_number();
     load_resoure();
 }
 
@@ -203,7 +204,7 @@ static void event_handler(lv_event_t * e)
         {
             click_number = (click_number * (str_count * 10)) + (tmp_str_click_number[str_count] - '0');
         }
-        printf("%d\n", click_number);
+        //printf("%d\n", click_number);
 
         int click_row, click_col;
         int row, col;
@@ -216,6 +217,7 @@ static void event_handler(lv_event_t * e)
                 {
                     click_row = row;
                     click_col = col;
+                    break;
                 }
             }
         }
@@ -242,32 +244,38 @@ static void event_handler(lv_event_t * e)
         }
         if (check_sort() == 1)
             lv_obj_move_foreground(g_game_win);
-        LV_LOG_USER("Toggled");
-        printf("fdsfadf\n");
     }
 }
 
 
 static bool check_sort(void)
 {
-    int row, col, ret = 0;
+    int row, col, count = 0, ret = 0;
+    int buffer[OBJ_COUNT_VER*OBJ_COUNT_VER] = {0};
+
     for(row = 0; row < OBJ_COUNT_VER; row++)
     {
         for(col = 0; col < OBJ_COUNT_VER; col++)
         {
-            if(0 == g_rand_number[row][col])
-            {
-                if(((g_rand_number[row][col+1] - g_rand_number[row][col] == 1)) ||\
-                   (((row+1) == OBJ_COUNT_VER) && (col+1) == OBJ_COUNT_VER))
-                    ret = 1;
-                else
-                {
-                    ret = 0;
-                    break;
-                }
-            }
+            buffer[count++] = g_rand_number[row][col];
         }
     }
+
+    printf("\n\n-----------------\n");
+
+    for (count = 0; count < ((OBJ_COUNT_VER*OBJ_COUNT_VER) - 2); count++)
+    {
+        printf("%d ", buffer[count]);
+        if (buffer[count] < buffer[count+1])
+            ret = 1;
+        else
+        {
+            printf("\nelse:%d ", buffer[count]);
+            ret = 0;
+            break;
+        }
+    }
+    printf("\n\n");
     return ret;
 }
 
@@ -277,12 +285,12 @@ static bool check_sort(void)
  **********************/
 
 /*
- *  函数名：   void lv_100ask_demo_tron(void)
+ *  函数名：   void lv_100ask_demo_tiles(void)
  *  输入参数： 无
  *  返回值：   无
  *  函数作用： 应用初始化入口
 */
-void lv_100ask_demo_tron(void)
+void lv_100ask_demo_tiles(void)
 {
     // 初始化随机数
     init_list_rand_number();
