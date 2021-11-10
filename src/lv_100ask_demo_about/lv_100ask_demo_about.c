@@ -202,7 +202,7 @@ void lv_100ask_demo_about(void)
     lv_list_add_btn(info_list2, "\xef""2021-11-11", "Updated");
     btn = lv_list_add_btn(info_list2, LV_SYMBOL_EYE_OPEN" https://www.100ask.net  "LV_SYMBOL_RIGHT, "Source code");
     lv_obj_add_event_cb(btn, create_show_qrcode_event_cb, LV_EVENT_CLICKED, "https://www.100ask.net");
-    lv_list_add_btn(info_list2, LV_SYMBOL_WARNING" Copyright @ 2019-2021 Shenzhen Baiwenwang Technology Co., Ltd. All Rights Reserved.", "Copyright");
+    lv_list_add_btn(info_list2, LV_SYMBOL_WARNING" Copyright @ 2008-2021 Shenzhen Baiwenwang Technology Co., Ltd. All Rights Reserved.", "Copyright");
 
     /* Create info list3 */
     info_list3 = lv_list_create(obj_layout);
@@ -247,7 +247,7 @@ void lv_100ask_demo_about(void)
     lv_style_set_text_opa(&span->style, LV_OPA_70);
 
     span = lv_spangroup_new_span(spans);
-    lv_span_set_text_static(span, "\nCopyright @ 2019-2021 Shenzhen Baiwenwang Technology Co., Ltd. All Rights Reserved.");
+    lv_span_set_text_static(span, "\nCopyright @ 2008-2021 Shenzhen Baiwenwang Technology Co., Ltd. All Rights Reserved.");
     lv_style_set_text_opa(&span->style, LV_OPA_70);
 
 }
